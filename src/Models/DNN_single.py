@@ -51,7 +51,7 @@ class Logistic_regression(nn.Module):
 
 
     def forward(self, x):
-
+        x = x.reshape(-1, 784)
         out1 = self.fc1(x)
         
         out = self.fc2(out1)
@@ -168,12 +168,12 @@ class Logistic_regression(nn.Module):
             
             self.data = features
             
-            self.labels = labels.view(-1)
+            self.labels = labels.reshape(-1)
             
         def __getitem__(self, index):
             data, target = self.data[index], self.labels[index]
             
-            data = data.view(-1)
+            data = data.reshape(-1)
             
             # Your transformations here (or set it in CIFAR10)
             
@@ -289,7 +289,7 @@ class DNNModel_single(nn.Module):
         def __getitem__(self, index):
             data, target = self.data[index]
             
-            data = data.view(-1)
+            data = data.reshape(-1)
             
             # Your transformations here (or set it in CIFAR10)
             
